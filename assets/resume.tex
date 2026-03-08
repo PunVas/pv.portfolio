@@ -1,0 +1,219 @@
+\documentclass[a4paper,10pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\pagestyle{empty}
+\usepackage{parskip}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+
+% SAFE MARGINS (0.5in) - Crucial for printing/ATS
+\usepackage[
+    margin=0.3in,
+    a4paper
+]{geometry}
+\usepackage[hidelinks]{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\newcommand{\ulhref}[2]{\href{#1}{\uline{#2}}}
+\usepackage{mathptmx}
+
+\hypersetup{
+    pdfstartview={XYZ null null 1.0},
+    pdfpagemode=UseNone,
+}
+
+% =============================================
+%  SPACE OPTIMIZATION SETTINGS
+% =============================================
+
+% 1. Tighten the spacing AROUND section headers to save vertical space
+% \titlespacing*{command}{left}{before-sep}{after-sep}
+\titleformat{\section}{\bfseries\Large}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{5pt}{3pt} 
+
+\titleformat{\subsection}{\bfseries\normalsize}{}{0em}{}
+\setlist{noitemsep, topsep=1pt} % Tighten bullet points
+
+\usepackage{setspace}
+\setstretch{0.9} % Readable but compact
+
+\begin{document}
+
+%====================
+% Header
+%====================
+\begin{center}
+    {\LARGE \textbf{PUNEET VASWANI}} \\[4pt]
+    P: +91 8619661188 \quad \textbar \quad 
+    \ulhref{mailto:puneetvaswani0609@gmail.com}{puneetvaswani0609@gmail.com} \quad \textbar \quad
+    \ulhref{https://linkedin.com/in/puneet-v-171885310/}{LinkedIn} \quad \textbar \quad
+    \ulhref{https://github.com/PunVas}{GitHub} \quad \textbar \quad
+    \ulhref{https://codeforces.com/profile/0x0609PVLfa}{CodeForces}
+\end{center}
+
+%====================
+% EDUCATION
+%====================
+\section*{EDUCATION}
+\textbf{Indian Institute of Information Technology, Bhopal (IIITB)} \hfill \textit{Aug 2023 -- May 2027} \\
+B. Tech in Computer Science and Engineering \\
+Relevant Coursework: Data Structures \& Algorithms, OOP, Operating Systems, Databases, Networks \\
+CGPA: \textbf{8.88/10}
+
+%====================
+% WORK EXPERIENCE
+%====================
+\section*{WORK EXPERIENCE}
+
+% \textbf{AI Intern} \textbar\ \textit{Across the Globe (ATG)} \textbar\ \textit{\ulhref{https://drive.google.com/file/d/1uA504CrPV_GRbMPv7xv1I5KOBQYJkNOb/view?usp=sharing}{Certificate}} \hfill \textit{Jun 2025 -- Nov 2025}
+% \begin{itemize}
+%     \item Engineered Python backend pipelines (FastAPI) to transform LLM inference outputs into automated video generation workflows, increasing user engagement by 10\%.
+%     \item Wrote a custom screen recording engine from scratch, optimizing resource usage and \textbf{cutting cloud infrastructure costs} (AWS S3, EC2, Lambda) by over 50\%.
+%     \item Identified and documented two critical intranet security flaws (salary data leak \& stored XSS), enabling remediation of vulnerabilities that could have exposed confidential employee data. 
+% \end{itemize}
+\textbf{Backend Engineering Intern} \textbar\ \textit{Linkiss Korea Inc. (Seoul, South Korea)} \textbar\ \textit{\ulhref{https://drive.google.com/file/d/1XUQSmp2AWRXqGVOLyPhuP5WjdLKun7tz/view}{Contract}} \hfill \textit{Jan 2026 -- Present}
+\begin{itemize}
+    \item Refactored the \textbf{Doctor Listing API} by replacing iterative database calls with \textbf{batch aggregation pipelines} and \textbf{in-memory data mapping}, eliminating \textbf{N+1 query bottleneck}, reducing complexity from $\mathcal{O}(N)$ to $\mathcal{O}(1)$ query sets per request.
+    % \item Implemented \textbf{in-memory data mapping} for user profiles, certificates, and scoring data, eliminating redundant lookups and resolving a critical \textbf{N+1 query bottleneck}.
+    \item Resolved data visibility bugs by unifying \textbf{inconsistent database keys} and enforcing \textbf{deterministic sorting} prior to pagination.
+\item Patched a critical \textbf{Broken Access Control} vulnerability by implementing multi-tenant validation, preventing unauthorized logins from deactivated or deleted hospital accounts.
+\item Engineered \textbf{state-aware notification filtering} for WebRTC/Agora sessions, dynamically suppressing redundant push alerts for active users to improve UX and reduce API overhead.\item Engineered a \textbf{Real-Time Log Sanitizer} in Python to prevent secret leaks; implemented \textbf{recursive namespace inspection} and \textbf{regex streaming} to dynamically mask environment variables and hardcoded credentials.
+\end{itemize}
+\textbf{AI Developer Intern} \textbar\ \textit{Across the Globe (Bengaluru, India)} \textbar\ \textit{\ulhref{https://drive.google.com/file/d/1uA504CrPV_GRbMPv7xv1I5KOBQYJkNOb/view?usp=sharing}{Certificate}} \textbar\ \textit{\ulhref{https://drive.google.com/file/d/1oBmQhlauoENZSHMzk9S1HFaZVA4W2laZ/view?usp=sharing}{Letter of Recommendation (CEO)}} \hfill \textit{Jun 2025 -- Nov 2025}
+\begin{itemize}
+    \item Assisted in architecting scalable Python (FastAPI) pipelines to convert LLM inference outputs into automated video workflows, driving a \textbf{10\% increase in user engagement}.
+    \item Developed a proprietary visualization recorder using \textbf{Playwright (headless)}, optimizing CPU overhead and \textbf{slashing AWS cloud costs (S3, EC2, Lambda) by over 40\%} for the rendering pipeline.
+    \item Identified two critical vulnerabilities \textbf{(Salary Data Leak \& Stored XSS)}, effectively mitigating risks that threatened confidential employee data. 
+\end{itemize}
+
+% \textbf{Teaching Assistant} \textbar\ \textit{IIIT Bhopal} \hfill \textit{Jul 2024 -- Jul 2025}
+% \begin{itemize}
+%     \item Developed a centralized Inventory Management System (Python + SQL), reducing errors by \textbf{40\%} and saving \textbf{20+ staff hours/week}.
+%     \item Standardized 20+ study materials (lectures, assignments), improving teaching consistency and course ratings by \textbf{15\%}.
+% \end{itemize}
+
+
+\textbf{Teaching Assistant} \textbar\ \textit{IIIT Bhopal} \hfill \textit{Jul 2024 -- Jul 2025}
+\begin{itemize}
+    \item Developed a centralized Inventory Management System (Python + SQL), reducing errors by \textbf{40\%} and saving \textbf{20+ staff hours/week}.
+    \item Standardized 20+ study materials (lectures, assignments), improving teaching consistency and course ratings by \textbf{15\%}.
+\end{itemize}
+
+%====================
+% RESEARCH PROJECTS (The "Hero" Section - Moved to Top)
+%====================
+\section*{PROJECTS}
+
+% --- ZERO-SHOT TRANSFER (The Star) ---
+\textbf{Zero-Shot Cross-Lingual Transfer (English $\rightarrow$ Hindi)} \textbar\ \textit{PyTorch, XLM-R, ONNX} \hfill \textit{\ulhref{https://github.com/PunVas/cross-lingual-transfer-indic}{GitHub}} \textbar\ \textit{\ulhref{https://huggingface.co/spaces/puneet0609/hindi-nli-demo}{Live Demo}}
+\begin{itemize}
+    \item Benchmarked \textbf{XLM-RoBERTa vs. mBERT} on Zero-Shot Hindi XNLI, achieving \textbf{67.2\% accuracy} (outperforming the mBERT baseline by \textbf{10.04\%}) and validating the superior capacity of \textbf{shared subword vocabularies}.
+    \item Conducted comparative analysis using \textbf{Weighted F1-Score}, diagnosing specific linguistic transfer failures in \textbf{negations and cultural entities} due to the lack of target language supervision.
+    \item Optimized deployment by exporting to \textbf{ONNX} and applying \textbf{dynamic Int8 quantization}, reducing inference latency by \textbf{6.0x} and model size by \textbf{73\%} on CPU-bound environments.
+\end{itemize}
+
+% --- GRAPH RECSYS (The Complex Architecture) ---
+\textbf{Graph-Augmented Two-Tower Recommendation System} \textbar\ \textit{PyTorch, S-BERT, SciPy}
+\hfill \textit{\ulhref{https://colab.research.google.com/drive/1pSZ-_kfBuV2U72o1rum27Nb86zPyZxHq?usp=sharing}{Notebook}} \textbar\ \textit{\ulhref{https://huggingface.co/spaces/puneet0609/book-recommender-graphnn-2twr}{Live Demo}}
+\begin{itemize}
+    \item Built a \textbf{Hybrid Two-Tower RecSys} on \textbf{26k+ interactions} (9k users), achieving \textbf{86.0\% Recall@10} and \textbf{82.9\% NDCG@10} by fusing collaborative and semantic signals.
+    \item Engineered a custom \textbf{Graph Convolution Layer} using SciPy sparse matrices to propagate embeddings over 2-hop neighborhoods, reducing cold-start sparsity by smoothing features.
+    \item Designed a user history encoder with \textbf{GRU + Multi-Head Attention} to model sequential interests, optimizing with \textbf{InfoNCE Loss} ($T=0.07$) for \textbf{79.9\% Top-1 Accuracy}.
+    \item Deployed \textbf{Sentence-BERT} for item vectorization, enabling \textbf{Zero-Shot retrieval} of unseen books via semantic description matching in $O(N)$ inference time.
+\end{itemize}
+
+\textbf{High-Throughput Event-Driven Backend} \textbar\ \textit{Go, net/http, Redis, RabbitMQ, Docker} \hfill \textit{\ulhref{https://github.com/PunVas/golang-proj-adv-bknd}{GitHub}}
+\begin{itemize}
+    \item Engineered an event-driven backend in Go handling \textbf{9,000+ req/sec} with \textbf{P99 $<$ 50ms} under read-heavy high-concurrency load.
+    \item Prevented cache stampedes using \textbf{Redis Cache-Aside} + \textbf{singleflight}, scaling to \textbf{1,000+ concurrent users}.
+    \item Offloaded write-heavy operations to \textbf{RabbitMQ}, improving reliability with background consumers and manual acknowledgements.
+    \item Designed production-grade architecture with \textbf{graceful shutdowns}, structured logging, and \textbf{Docker Compose} orchestration.
+\end{itemize}
+
+\textbf{Automated Product Decision System} \textbar\ \textit{FastAPI, WebSockets, JWT, GitHub Actions, Gemini API} \hfill \textit{\ulhref{https://github.com/Akshit2807/Eco_Cycle}{GitHub}} \textbar\ \textit{\ulhref{https://github.com/Akshit2807/Eco_Cycle/releases/download/v1.52-a2f301a/eco-cycle.v52.apk}{Android App}}
+\begin{itemize}
+    \item Defined and deployed a backend system to automate product approval workflows with an LLM-backed decision component.
+    \item Deployed a backend orchestrating approval workflows with \textbf{Gemini API}, processing \textbf{400+ decisions/hr}.
+    \item Integrated secure \textbf{JWT-based authentication} and \textbf{WebSocket} pipelines for real-time decision processing.
+    \item Built a \textbf{CI/CD pipeline} using GitHub Actions, reducing application build time by \textbf{$\sim$30\%}.
+    \item Added structured logging and fault-tolerant processing, improving product decision latency by \textbf{over 70\%}.
+\end{itemize}
+
+
+
+
+
+
+% \textbf{Automated Product Decision System} \textbar\ \textit{Python, WebSockets, JWT, Actions, Gemini API} \hfill \textit{\ulhref{https://github.com/Akshit2807/Eco_Cycle}{GitHub}}
+% \begin{itemize}
+%     \item Defined and deployed a backend system to automate product approval workflows with an LLM-backed decision component.
+%     \item Deployed a backend orchestrating approval workflows with \textbf{Gemini API}, processing \textbf{500+ decisions/hr} with \textbf{95\% accuracy}.
+%     \item Integrated secure \textbf{JWT-based authentication} and WebSocket pipelines for real-time decision processing.
+%     \item Built a \textbf{CI/CD pipeline} using GitHub Actions, reducing application build time by \textbf{$\sim$40\%}.
+%     \item Added structured logging and fault-tolerant processing, improving product decision latency by \textbf{over 70\%}.
+% \end{itemize}
+
+
+\textbf{pun-nlp (Open Source Library)} \textbar\ \textit{Python, PyPI, NLP, CI/CD} \hfill \textit{\ulhref{https://pypi.org/project/pun-nlp/}{PyPI}}
+\begin{itemize}
+    \item Designed and published a \textbf{PyPI library} with unified APIs for \textbf{NLTK/spaCy}, reducing boilerplate code by \textbf{30\%} for NLP tasks.
+    \item Engineered optimized pipelines for \textbf{tokenization and vectorization}, accelerating ML prototyping speed.
+    \item Achieved \textbf{6,500+ downloads}, with adoption as a standard preprocessing tool.
+\end{itemize}
+
+
+%====================
+% POSITION OF RESPONSIBILITY (Dedicated Section)
+%====================
+\section*{LEADERSHIP EXPERIENCE} % Renamed for ATS clarity, but "Position of Responsibility" is also fine
+
+\textbf{GenAI Lead} \textbar\ \textit{Google Developer Groups, IIIT Bhopal} \hfill \textit{Oct 2025 -- Present}
+\begin{itemize}
+    \item Facilitated analysis of research papers (e.g., 'Attention is All You Need'), focusing on architectural implementation details.
+    \item Organized technical workshops in association with \textbf{Google Cloud} and \textbf{Hack2skill}, with \textbf{400+} participants.
+\end{itemize}
+
+
+AI/ML Assistant in the college club 'Axios’:	Oct 2024 - Present
+•	Led 5+ AI/ML training sessions in Axios club, resulting in 2x increase in member project participation and fostering hands on adoption of ML concepts.
+
+
+%====================
+% ACHIEVEMENTS
+%====================
+\section*{HONORS \& AWARDS} % Renamed to distinguish from Leadership
+\begin{itemize}
+    \item \textbf{National Runner-Up - Smart India Hackathon 2025:} Secured \textbf{2nd Rank} in the Grand Finale (Bengaluru) among \textbf{131 participant teams} nationwide for developing a Fake IC Detection System. (\textit{\ulhref{https://drive.google.com/file/d/1BJiUDBxGbbsS9Nt43kZePZgsTuKN0oX7/view?usp=sharing}{Certificate}})
+    \item Ranked in the \textbf{top 18\% globally} on \textbf{CodeForces (Specialist, 1484 rating)} among \textbf{100,000+ active competitive programmers} by solving complex algorithmic challenges.
+    \item \textbf{Vulnerability Disclosure}: Identified and reported a \textbf{critical-severity} flaw (CVSS 7.5/10 - HIGH) in \textbf{TakeUForward}'s legacy platform affecting \textbf{1.25M+ users}; officially acknowledged and patched. (\textit{\ulhref{https://drive.google.com/file/d/1L0xMoXyYOdKqCSoVcEP2x-3bJPw6NQFK/view?usp=sharing}{Acceptance Mail}})
+    % \item \textbf{Hack-O-Sprint 2.0 Winner}: Architected an \textbf{AI-driven attendance system}, successfully competing against 50+ teams.
+    % \item \textbf{Hack-O-Sprint 3.0 Runner-Up (2nd Place)}: Created a secure \textbf{Blockchain and AI-based system} for tourist safety.
+    \item \textbf{ML Quest Hackathon (IEEE CIS, GHRCE) Top Finisher (3rd Place)}: Trained an \textbf{ML model} to predict flight fare. (\textit{\ulhref{https://drive.google.com/file/d/1L0xMoXyYOdKqCSoVcEP2x-3bJPw6NQFK/view?usp=sharing}{Certificate}})
+
+    % \item Achieved a global rank in the \textbf{top 34\% (1474/4314)} in a Kaggle competition using feature engineering and ensemble techniques.
+    % \item Secured the \textbf{66th position} in GeeksForGeeks' Bi-Wizard 17.0 contest, showcasing strong algorithmic understanding.
+    % \item \textbf{Event Co-organizer}: Managed logistics and coordination for the \textbf{ArmaCode-0 hackathon} in association with IISER Bhopal.
+
+\end{itemize}
+
+%====================
+% SKILLS
+%====================
+\section*{SKILLS}
+\textbf{Languages:} Go, Python, C++, SQL, Bash \\
+\textbf{Backend \& Systems:} AWS, System Design, Redis, RabbitMQ, PostgreSQL, Docker, CI/CD, Unit Testing, MongoDB \\
+\textbf{ML \& Data:} LGBM, XGBoost, NumPy, Pandas, Scikit-learn, TensorFlow, LLMs, RAG, Matplotlib, ONNX \\
+\textbf{Tools:} Linux, Git, GitHub Actions, FastAPI, VS Code, Postman, Sentry, Dozzle \\
+\textbf{Soft Skills:} Leadership, Technical Writing, Public Speaking, Agile/Scrum
+
+
+\end{document}

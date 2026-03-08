@@ -1,0 +1,25 @@
+# Binaries
+portfolio-server
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Environment variables
+.env
+
+# Media
+assets/profile_raw.jpg
+assets/*.psd
+assets/*.ai
+
+# Misc
+.DS_Store
+.idea/
+.vscode/
+
+# Ignore local git directory
+.git/

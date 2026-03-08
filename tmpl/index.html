@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Puneet Vaswani · Backend Engineer</title>
+    <meta name="description"
+        content="Puneet Vaswani — Systems-focused Backend Developer. Go, Python, ML. IIIT Bhopal. Backend intern at Linkiss Korea. SSH into the portfolio." />
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+
+<body>
+
+    <!-- ── NAVBAR ── -->
+    <nav>
+        <div class="nav-inner">
+            <div class="nav-logo">PV<span>.</span>DEV</div>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#stats">Stats</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+    <section id="hero">
+        <div class="container">
+            <div class="hero-layout">
+
+                <!-- Left: Identity -->
+                <div class="hero-left">
+                    <p class="hero-eyebrow">// Available for Backend / Systems Roles</p>
+                    <h1 class="hero-name">
+                        {{$names := split .Profile.Name " "}}
+                        {{index $names 0}}<br><em data-text="{{index $names 1}}">{{index $names 1}}</em>
+                    </h1>
+                    <p class="hero-tagline">{{ .Profile.Tagline }}</p>
+                    <p class="hero-sub">{{ (index .Profile.Experience 0).Role }} @ {{ (index .Profile.Experience
+                        0).Company }}
+                        &nbsp;·&nbsp; {{ .Profile.Education.Institution }} {{ .Profile.Education.Degree }}</p>
+                    <div class="hero-cta-group">
+                        <a href="#contact" class="btn btn-primary">&#9993; Contact Me</a>
+                        <a href="#experience" class="btn btn-secondary">&#8595; View Work</a>
+                    </div>
+                </div>
+
+                <!-- Right: Terminal -->
+                <div class="hero-right">
+                    <div class="terminal-window" data-tilt data-tilt-max="2" data-tilt-speed="400" data-tilt-glare
+                        data-tilt-max-glare="0.1">
+                        <div class="terminal-bar">
+                            <div class="terminal-dots">
+                                <div class="terminal-dot dot-r"></div>
+                                <div class="terminal-dot dot-y"></div>
+                                <div class="terminal-dot dot-g"></div>
+                            </div>
+                            <span class="terminal-title">puneet@portfolio — ssh</span>
+                            <button class="terminal-maximize" id="term-toggle" aria-label="Toggle Fullscreen"
+                                onclick="toggleFullscreen()">
+                                <svg id="maximize-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                                    </path>
+                                </svg>
+                                <svg id="minimize-icon" style="display:none;" width="14" height="14" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="terminal-body" id="terminal-body"></div>
+                        <div class="ssh-hint">
+                            <code
+                                id="ssh-cmd">ssh {{or (env "DOMAIN") "portfolio.vaswani.dev"}} -p {{or (env "SSH_PORT") "2222"}}</code>
+                            <button class="copy-btn" id="copy-ssh" onclick="copySSH()">copy</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     EXPERIENCE
+══════════════════════════════════════════ -->
+    <section id="experience" class="scroll-section">
+        <div class="sticky-wrapper">
+            <div class="container">
+                <p class="section-label"># ls ./experience</p>
+                <h2 class="section-title">Work History</h2>
+                <div class="exp-grid scroll-content">
+                    {{range $i, $exp := .Profile.Experience}}
+                    <div class="exp-card scroll-item glassmorphism" data-index="0{{add $i 1}}" data-tilt
+                        data-tilt-max="3" data-tilt-speed="400">
+                        <div class="exp-meta">{{$exp.Period}}</div>
+                        <div class="exp-role">{{$exp.Role}}</div>
+                        <div class="exp-company">{{$exp.Company}} &nbsp;·&nbsp; {{$exp.Location}}</div>
+                        <div class="exp-desc">
+                            <ul>
+                                {{range $h := $exp.Highlights}}
+                                <li>{{$h}}</li>
+                                {{end}}
+                            </ul>
+                        </div>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     PROJECTS
+══════════════════════════════════════════ -->
+    <section id="projects" class="scroll-section">
+        <div class="sticky-wrapper">
+            <div class="container">
+                <p class="section-label"># cat projects.json</p>
+                <h2 class="section-title">Key Projects</h2>
+                <div class="proj-grid scroll-content">
+                    {{range $i, $proj := .Profile.Projects}}
+                    <div class="proj-card scroll-item glassmorphism" data-tilt data-tilt-max="2" data-tilt-glare
+                        data-tilt-max-glare="0.1">
+                        <div class="proj-header">
+                            <div class="proj-name">{{$proj.Name}}</div>
+                            {{range $name, $url := $proj.Links}}
+                            <a href="{{$url}}" target="_blank" class="verification-badge">{{title $name}} <svg
+                                    width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg></a>
+                            {{end}}
+                        </div>
+                        <div class="proj-stack">
+                            {{range .RelatedSkills}}
+                            <span class="skill-tag mini">{{.}}</span>
+                            {{end}}
+                        </div>
+                        <div class="proj-desc">{{.Description}}</div>
+                    </div>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     SKILLS
+══════════════════════════════════════════ -->
+    <section id="skills">
+        <div class="container">
+            <p class="section-label"># cat skills.json</p>
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="skills-grid reveal">
+                {{range .Profile.Skills}}
+                {{range .Items}}
+                <div class="skill-tag large"><span class="skill-dot"></span>{{.}}</div>
+                {{end}}
+                {{end}}
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     STATS
+══════════════════════════════════════════ -->
+    <section id="stats">
+        <div class="container">
+            <p class="section-label"># cat /proc/vaswani/stats</p>
+            <h2 class="section-title">Numbers</h2>
+            <div class="stats-grid">
+                {{range .Profile.Stats}}
+                <div class="stat-card reveal glassmorphism" data-tilt data-tilt-max="5" data-tilt-scale="1.05">
+                    <span class="stat-num" data-target="{{.Value | cleanNum}}">{{.Value}}</span>
+                    <div class="stat-label">{{.Label}}</div>
+                </div>
+                {{end}}
+                {{range .Profile.Achievements}}
+                <div class="stat-card reveal glassmorphism" data-tilt data-tilt-max="5" data-tilt-scale="1.05">
+                    <span class="stat-num">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                            <path d="M4 22h16"></path>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+                        </svg>
+                    </span>
+                    <div class="stat-label"><strong>{{.Title}}</strong><br>{{.Description}}</div>
+                </div>
+                {{end}}
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════ -->
+    <section id="contact">
+        <div class="container">
+            <p class="section-label"># contact --open-channel</p>
+            <h2 class="section-title">Get In Touch</h2>
+
+            <div class="contact-layout">
+                <div class="contact-intro reveal">
+                    <h3>Let's build something real.</h3>
+                    <p>
+                        Actively looking for backend and systems engineering roles.
+                        Messages hit my Discord DMs directly via webhook — no middlemen.
+                    </p>
+                    <div class="contact-info-item">
+                        <strong>SSH &nbsp;</strong>
+                        <span>ssh {{or (env "DOMAIN") "portfolio.vaswani.dev"}} -p {{or (env "SSH_PORT") "2222"}}</span>
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>Email</strong>
+                        <a href="mailto:{{.Profile.Contact.Email}}">{{.Profile.Contact.Email}}</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>GitHub</strong>
+                        <a href="https://{{.Profile.Contact.GitHub}}" target="_blank">{{.Profile.Contact.GitHub}}</a>
+                    </div>
+                    <div class="contact-info-item">
+                        <strong>Link</strong>
+                        <a href="https://{{.Profile.Contact.LinkedIn}}" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+
+                <form class="contact-form reveal glassmorphism" id="contact-form" onsubmit="submitContact(event)">
+                    <div class="form-group">
+                        <label class="form-label" for="name">Your Name</label>
+                        <input class="form-input" type="text" id="name" name="name" placeholder="Ada Lovelace" required
+                            autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="message">Message</label>
+                        <textarea class="form-textarea" id="message" name="message"
+                            placeholder="Hey Puneet, we'd love to chat about..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%">
+                        &#10003; Send via Webhook
+                    </button>
+                    <div class="form-status" id="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating GitHub Widget -->
+    <a href="https://{{.Profile.Contact.GitHub}}" target="_blank" class="github-widget">
+        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+            <path
+                d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+        </svg>
+        <span>View Source</span>
+    </a>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        Built in Go &nbsp;·&nbsp; HTTP :8080 &nbsp;+&nbsp; SSH :2222 &nbsp;·&nbsp;
+        &copy; 2026 {{.Profile.Name}} &nbsp;·&nbsp;
+        <a href="https://{{.Profile.Contact.GitHub}}" target="_blank">{{.Profile.Contact.GitHub}}</a>
+    </footer>
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="/static/script.js"></script>
+    <script>
+        // Init tilting
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"));
+    </script>
+</body>
+
+</html>

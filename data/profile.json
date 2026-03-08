@@ -1,0 +1,158 @@
+{
+  "name": "Puneet Vaswani",
+  "tagline": "Systems-focused Backend Developer",
+  "location": "India",
+  "education": {
+    "institution": "IIIT Bhopal",
+    "degree": "B.Tech CSE",
+    "cgpa": "8.88/10",
+    "period": "2023–2027"
+  },
+  "contact": {
+    "phone": "+91 8619661188",
+    "email": "puneetvaswani0609@gmail.com",
+    "linkedin": "linkedin.com/in/puneet-v-171885310",
+    "github": "github.com/PunVas",
+    "codeforces": "codeforces.com/profile/0x0609PVLfa"
+  },
+  "stats": [
+    {
+      "value": "1484",
+      "label": "CodeForces Rating · Specialist · top 18% globally"
+    },
+    {
+      "value": "8.88",
+      "label": "B.Tech CGPA / 10 · IIIT Bhopal · 2023–2027"
+    },
+    {
+      "value": "6.5k+",
+      "label": "PyPI downloads · pun-nlp library"
+    },
+    {
+      "value": "2nd",
+      "label": "Smart India Hackathon 2025 · National Runner-Up / 131 teams"
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Smart India Hackathon 2025 – National Runner-Up",
+      "description": "2nd place (Bengaluru Grand Finale) among 131 teams. Built Fake IC Detection System."
+    },
+    {
+      "title": "CodeForces Specialist (1484 rating)",
+      "description": "Top 18% globally among 100,000+ active competitive programmers."
+    },
+    {
+      "title": "Vulnerability Disclosure – TakeUForward",
+      "description": "Critical CVSS 7.5/10 flaw affecting 1.25M+ users. Officially acknowledged & patched."
+    },
+    {
+      "title": "ML Quest Hackathon – 3rd Place",
+      "description": "IEEE CIS, GHRCE. Trained ML model to predict flight fares."
+    },
+    {
+      "title": "GenAI Lead – Google Developer Groups, IIIT Bhopal",
+      "description": "Organized workshops with Google Cloud + Hack2skill. 400+ participants."
+    }
+  ],
+  "experience": [
+    {
+      "id": "linkiss",
+      "role": "Backend Engineering Intern",
+      "company": "Linkiss Korea Inc.",
+      "location": "Seoul, South Korea",
+      "period": "Jan 2026 - Present",
+      "highlights": [
+        "Refactored Doctor Listing API using batch aggregation, eliminating N+1 query bottleneck (O(N) to O(1)).",
+        "Resolved data visibility bugs by standardizing DB keys and deterministic sorting.",
+        "Patched critical Broken Access Control flaw via multi-tenant validation.",
+        "Engineered state-aware push notification filtering for WebRTC/Agora sessions.",
+        "Created a Real-Time Log Sanitizer in Python preventing secret leaks via regex streaming."
+      ]
+    },
+    {
+      "id": "atg",
+      "role": "AI Developer Intern",
+      "company": "Across the Globe",
+      "location": "Bengaluru, India",
+      "period": "Jun 2025 - Nov 2025",
+      "highlights": [
+        "Architected scalable Python (FastAPI) pipelines for LLM-driven video workflows.",
+        "Developed Playwright-based headless visualization recorder, slashing AWS costs by >40%.",
+        "Identified and mitigated Salary Data Leak & Stored XSS flaws."
+      ]
+    },
+    {
+      "id": "iiitb",
+      "role": "Teaching Assistant",
+      "company": "IIIT Bhopal",
+      "location": "Bhopal, India",
+      "period": "Jul 2024 - Jul 2025",
+      "highlights": [
+        "Developed custom Python/SQL Inventory Management System saving 20+ hours/week.",
+        "Standardized 20+ study materials increasing course ratings."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "High-Throughput Event-Driven Backend",
+      "related_skills": ["Go", "net/http", "Redis", "RabbitMQ", "Docker"],
+      "description": "9,000+ req/sec with P99 < 50ms. Redis Cache-Aside + singleflight preventing cache stampedes. RabbitMQ for write-heavy offloading. 1,000+ concurrent users.",
+      "links": {
+        "github": "https://github.com/PunVas/golang-proj-adv-bknd"
+      }
+    },
+    {
+      "name": "Zero-Shot Cross-Lingual Transfer (EN→HI)",
+      "related_skills": ["PyTorch", "XLM-RoBERTa", "ONNX"],
+      "description": "67.2% accuracy on Hindi XNLI — beats mBERT baseline by 10.04%. ONNX + Int8 quantization gave 6x latency reduction and 73% model size cut on CPU.",
+      "links": {
+        "github": "https://github.com/PunVas/cross-lingual-transfer-indic"
+      }
+    },
+    {
+      "name": "Graph-Augmented Two-Tower RecSys",
+      "related_skills": ["PyTorch", "Sentence-BERT", "SciPy"],
+      "description": "86.0% Recall@10, 82.9% NDCG@10 on 26k+ interactions. GRU + Multi-Head Attention + InfoNCE Loss. Zero-shot retrieval via semantic description matching.",
+      "links": {
+        "demo": "https://huggingface.co/spaces/puneet0609/book-recommender-graphnn-2twr",
+        "github": "https://colab.research.google.com/drive/1pSZ-_kfBuV2U72o1rum27Nb86zPyZxHq?usp=sharing"
+      }
+    },
+    {
+      "name": "Automated Product Decision System",
+      "related_skills": ["FastAPI", "WebSockets", "JWT", "Gemini API"],
+      "description": "400+ decisions/hr. CI/CD automated via GitHub Actions. Integrated secure JWT-based auth and WebSocket pipelines.",
+      "links": {
+        "github": "https://github.com/Akshit2807/Eco_Cycle"
+      }
+    },
+    {
+      "name": "pun-nlp — Open Source PyPI Library",
+      "related_skills": ["Python", "PyPI", "NLP", "CI/CD"],
+      "description": "Unified NLTK/spaCy APIs. 6,500+ downloads. Reduces NLP boilerplate by 30%. Automated testing and CI/CD via GitHub Actions.",
+      "links": {
+        "demo": "https://pypi.org/project/pun-nlp/"
+      }
+    }
+  ],
+  "skills": [
+    {
+      "category": "Languages",
+      "items": ["Go", "Python", "C++", "SQL", "Bash", "JavaScript"]
+    },
+    {
+      "category": "Backend",
+      "items": ["net/http", "FastAPI", "Redis", "RabbitMQ", "PostgreSQL", "MongoDB", "Docker", "AWS"]
+    },
+    {
+      "category": "ML / AI",
+      "items": ["PyTorch", "XLM-RoBERTa", "ONNX", "LLMs", "RAG", "Scikit-learn", "TensorFlow"]
+    },
+    {
+      "category": "Tools",
+      "items": ["Linux", "Git", "GitHub Actions", "Postman", "Sentry", "Dozzle"]
+    }
+  ]
+}
