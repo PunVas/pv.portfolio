@@ -25,6 +25,7 @@ sshclient.exe
 
 # Environment variables
 .env
+ssh_host_key
 
 # IDEs
 .idea/
