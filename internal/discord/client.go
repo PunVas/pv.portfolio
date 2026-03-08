@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 type Client struct {
@@ -30,15 +31,34 @@ func (c *Client) Send(message, source string) {
 		}
 
 		body, _ := json.Marshal(payload)
-		resp, err := http.Post(c.WebhookURL, "application/json", bytes.NewBuffer(body))
-		if err != nil {
-			log.Printf("[discord] error sending message: %v", err)
+
+		maxRetries := 3
+		backoff := 2 * time.Second
+
+		for i := 0; i < maxRetries; i++ {
+			resp, err := http.Post(c.WebhookURL, "application/json", bytes.NewBuffer(body))
+			if err != nil {
+				log.Printf("[discord] error sending message (attempt %d): %v", i+1, err)
+				time.Sleep(backoff)
+				backoff *= 2
+				continue
+			}
+			defer resp.Body.Close()
+
+			if resp.StatusCode == http.StatusTooManyRequests {
+				log.Printf("[discord] rate limited (429) on attempt %d, retrying in %v...", i+1, backoff)
+				time.Sleep(backoff)
+				backoff *= 2
+				continue
+			}
+
+			if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+				log.Printf("[discord] unexpected status: %d", resp.StatusCode)
+			} else {
+				log.Printf("[discord] message sent successfully to %s", source)
+			}
 			return
 		}
-		defer resp.Body.Close()
-
-		if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-			log.Printf("[discord] unexpected status: %d", resp.StatusCode)
-		}
+		log.Printf("[discord] failed to send message after %d attempts", maxRetries)
 	}()
 }
