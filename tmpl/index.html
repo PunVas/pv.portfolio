@@ -35,6 +35,15 @@
 
                 <!-- Left: Identity -->
                 <div class="hero-left">
+                    <div class="profile-container reveal">
+                        <div class="profile-ascii-wrapper">
+                            {{ asciiProfile }}
+                        </div>
+                        <div class="profile-status">
+                            <span class="status-dot"></span>
+                            <span>System Active</span>
+                        </div>
+                    </div>
                     <p class="hero-eyebrow">// Available for Backend / Systems Roles</p>
                     <h1 class="hero-name">
                         {{$names := split .Profile.Name " "}}

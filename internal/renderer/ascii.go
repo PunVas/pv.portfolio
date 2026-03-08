@@ -1,6 +1,7 @@
 package renderer
 
 import (
+	"bytes"
 	"fmt"
 	"image"
 	_ "image/jpeg"
@@ -137,4 +138,53 @@ func ImageToHalfBlock(imagePath string, width int) (string, error) {
 	}
 
 	return sb.String(), nil
+}
+
+// ─────────────────────────────────────────────
+//  HTML VERSION
+// ─────────────────────────────────────────────
+
+func ImageToHTMLHalfBlock(imagePath string, width int) (string, error) {
+	f, err := os.Open(imagePath)
+	if err != nil {
+		return "", fmt.Errorf("open image: %w", err)
+	}
+	defer f.Close()
+
+	src, _, err := image.Decode(f)
+	if err != nil {
+		return "", fmt.Errorf("decode image: %w", err)
+	}
+
+	return renderHTMLFromImage(src, width), nil
+}
+
+func ImageBytesToHTMLHalfBlock(data []byte, width int) (string, error) {
+	src, _, err := image.Decode(bytes.NewReader(data))
+	if err != nil {
+		return "", fmt.Errorf("decode image bytes: %w", err)
+	}
+	return renderHTMLFromImage(src, width), nil
+}
+
+func renderHTMLFromImage(src image.Image, width int) string {
+	height := (width * src.Bounds().Dy() / src.Bounds().Dx()) & ^1
+	dst := image.NewRGBA(image.Rect(0, 0, width, height))
+	draw.BiLinear.Scale(dst, dst.Bounds(), src, src.Bounds(), draw.Over, nil)
+
+	var sb strings.Builder
+	sb.WriteString("<div class='ascii-container' style='line-height:1; font-family:monospace; white-space:pre;'>")
+	for y := 0; y < height; y += 2 {
+		sb.WriteString("<div style='display:flex;'>")
+		for x := 0; x < width; x++ {
+			top := dst.RGBAAt(x, y)
+			bot := dst.RGBAAt(x, y+1)
+			fmt.Fprintf(&sb, "<span style='color:rgb(%d,%d,%d); background-color:rgb(%d,%d,%d); display:inline-block; width:1ch;'>▀</span>",
+				top.R, top.G, top.B,
+				bot.R, bot.G, bot.B)
+		}
+		sb.WriteString("</div>")
+	}
+	sb.WriteString("</div>")
+	return sb.String()
 }

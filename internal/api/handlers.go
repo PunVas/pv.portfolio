@@ -1,6 +1,7 @@
 package api
 
 import (
+	"encoding/base64"
 	"encoding/json"
 	"html/template"
 	"log"
@@ -10,6 +11,7 @@ import (
 
 	"portfolio-server/internal/data"
 	"portfolio-server/internal/discord"
+	"portfolio-server/internal/renderer"
 	"portfolio-server/internal/sshbox"
 )
 
@@ -52,6 +54,32 @@ func serveIndex(store *data.Store) http.HandlerFunc {
 			return os.Getenv(key)
 		},
 		"mod": func(a, b int) int { return a % b },
+		"safe": func(s string) template.HTML {
+			return template.HTML(s)
+		},
+		"asciiProfile": func() template.HTML {
+			var imgData []byte
+			b64 := os.Getenv("PROFILE_IMAGE_BASE64")
+			if b64 != "" {
+				imgData, _ = base64.StdEncoding.DecodeString(b64)
+			}
+
+			var html string
+			var err error
+			// Slightly smaller width for better web fit (50 chars)
+			if len(imgData) > 0 {
+				html, err = renderer.ImageBytesToHTMLHalfBlock(imgData, 50)
+			} else {
+				// Fallback to local file if no env var
+				html, err = renderer.ImageToHTMLHalfBlock("assets/profile.jpg", 50)
+			}
+
+			if err != nil {
+				log.Printf("[http] ascii profile error: %v", err)
+				return template.HTML("<!-- ASCII rendering failed -->")
+			}
+			return template.HTML(html)
+		},
 	}
 	tmpl := template.Must(template.New("index.html").Funcs(funcs).ParseFiles("tmpl/index.html"))
 
