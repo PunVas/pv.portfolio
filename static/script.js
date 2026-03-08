@@ -10,7 +10,7 @@
 // ─── Auto-detect domain & SSH command ─────────
 // Try to read from the env-driven HTML first
 const sshCmdEl = document.getElementById('ssh-cmd');
-const SSH_CMD = sshCmdEl ? sshCmdEl.textContent : `ssh ${window.location.hostname || 'portfolio.vaswani.dev'} -p 2222`;
+const SSH_CMD = sshCmdEl ? sshCmdEl.textContent : `ssh ${window.location.hostname || 'portfolio.vaswani.dev'} -p 22`;
 const HOST = window.location.hostname || 'portfolio.vaswani.dev';
 
 // ─── ANSI to HTML ─────────────────────────────
@@ -343,46 +343,6 @@ async function submitContact(e) {
 }
 window.submitContact = submitContact;
 
-// ─── Scroll-driven Sections (Apple-style) ──────
-function initScrollSections() {
-    const sections = document.querySelectorAll('.scroll-section');
-
-    window.addEventListener('scroll', () => {
-        sections.forEach(section => {
-            const wrapper = section.querySelector('.sticky-wrapper');
-            const items = section.querySelectorAll('.scroll-item');
-            if (items.length === 0) return;
-
-            const rect = section.getBoundingClientRect();
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const viewportHeight = window.innerHeight;
-
-            // Calculate progress: 0 when top enters, 1 when bottom leaves
-            let progress = (window.scrollY - sectionTop) / (sectionHeight - viewportHeight);
-            progress = Math.max(0, Math.min(1, progress));
-
-            // Divide progress by number of items
-            const itemProgress = progress * items.length;
-
-            items.forEach((item, index) => {
-                const threshold = index;
-                const nextThreshold = index + 1;
-
-                // Show item if progress is within its range
-                if (itemProgress >= threshold - 0.2 && itemProgress < nextThreshold) {
-                    item.classList.add('active');
-                    item.classList.remove('exit');
-                } else if (itemProgress >= nextThreshold) {
-                    item.classList.remove('active');
-                    item.classList.add('exit');
-                } else {
-                    item.classList.remove('active', 'exit');
-                }
-            });
-        });
-    });
-}
 
 // ─── Terminal Fullscreen Toggle ────────────────
 function toggleFullscreen() {
@@ -415,7 +375,6 @@ window.toggleFullscreen = toggleFullscreen;
 // ─── Init ──────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     buildTerminal();
-    initScrollSections();
 
     // Auto-fullscreen on terminal interaction
     const term = document.querySelector('.terminal-window');

@@ -35,7 +35,7 @@ func main() {
 	}
 	sshPort := os.Getenv("SSH_PORT")
 	if sshPort == "" {
-		sshPort = "2222"
+		sshPort = "22"
 	}
 
 	var wg sync.WaitGroup

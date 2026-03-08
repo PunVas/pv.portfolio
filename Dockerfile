@@ -29,7 +29,7 @@ COPY --from=builder /app/assets ./assets
 
 # Expose ports
 EXPOSE 8080
-EXPOSE 2222
+EXPOSE 22
 
 # Ensure secure execution
 USER nobody:nobody

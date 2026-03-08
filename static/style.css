@@ -36,7 +36,6 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y proximity;
 }
 
 body {
@@ -493,57 +492,6 @@ nav {
 ═══════════════════════════════════════════ */
 section {
     padding: 6rem 0;
-    scroll-snap-align: start;
-}
-
-.scroll-section {
-    position: relative !important;
-    height: 350vh !important;
-    /* Extra height for scroll headroom */
-}
-
-.sticky-wrapper {
-    position: sticky !important;
-    top: 0 !important;
-    height: 100vh !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-    z-index: 10 !important;
-}
-
-.scroll-content {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.scroll-item {
-    position: absolute;
-    width: 100%;
-    max-width: 900px;
-    opacity: 0;
-    transform: translateY(50px) scale(0.9);
-    filter: blur(10px);
-    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    pointer-events: none;
-    will-change: transform, opacity, filter;
-}
-
-.scroll-item.active {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-    pointer-events: all;
-}
-
-.scroll-item.exit {
-    opacity: 0;
-    transform: translateY(-80px) scale(0.92);
-    filter: blur(15px);
 }
 
 .section-label {

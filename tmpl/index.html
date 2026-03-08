@@ -91,7 +91,7 @@
                         <div class="terminal-body" id="terminal-body"></div>
                         <div class="ssh-hint">
                             <code
-                                id="ssh-cmd">ssh {{or (env "DOMAIN") "portfolio.vaswani.dev"}} -p {{or (env "SSH_PORT") "2222"}}</code>
+                                id="ssh-cmd">ssh {{or (env "DOMAIN") "portfolio.vaswani.dev"}} -p {{or (env "SSH_PORT") "22"}}</code>
                             <button class="copy-btn" id="copy-ssh" onclick="copySSH()">copy</button>
                         </div>
                     </div>
@@ -104,28 +104,26 @@
     <!-- ══════════════════════════════════════════
      EXPERIENCE
 ══════════════════════════════════════════ -->
-    <section id="experience" class="scroll-section">
-        <div class="sticky-wrapper">
-            <div class="container">
-                <p class="section-label"># ls ./experience</p>
-                <h2 class="section-title">Work History</h2>
-                <div class="exp-grid scroll-content">
-                    {{range $i, $exp := .Profile.Experience}}
-                    <div class="exp-card scroll-item glassmorphism" data-index="0{{add $i 1}}" data-tilt
-                        data-tilt-max="3" data-tilt-speed="400">
-                        <div class="exp-meta">{{$exp.Period}}</div>
-                        <div class="exp-role">{{$exp.Role}}</div>
-                        <div class="exp-company">{{$exp.Company}} &nbsp;·&nbsp; {{$exp.Location}}</div>
-                        <div class="exp-desc">
-                            <ul>
-                                {{range $h := $exp.Highlights}}
-                                <li>{{$h}}</li>
-                                {{end}}
-                            </ul>
-                        </div>
+    <section id="experience">
+        <div class="container">
+            <p class="section-label"># ls ./experience</p>
+            <h2 class="section-title">Work History</h2>
+            <div class="exp-grid">
+                {{range $i, $exp := .Profile.Experience}}
+                <div class="exp-card glassmorphism" data-index="0{{add $i 1}}" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400">
+                    <div class="exp-meta">{{$exp.Period}}</div>
+                    <div class="exp-role">{{$exp.Role}}</div>
+                    <div class="exp-company">{{$exp.Company}} &nbsp;·&nbsp; {{$exp.Location}}</div>
+                    <div class="exp-desc">
+                        <ul>
+                            {{range $h := $exp.Highlights}}
+                            <li>{{$h}}</li>
+                            {{end}}
+                        </ul>
                     </div>
-                    {{end}}
                 </div>
+                {{end}}
             </div>
         </div>
     </section>
@@ -133,36 +131,34 @@
     <!-- ══════════════════════════════════════════
      PROJECTS
 ══════════════════════════════════════════ -->
-    <section id="projects" class="scroll-section">
-        <div class="sticky-wrapper">
-            <div class="container">
-                <p class="section-label"># cat projects.json</p>
-                <h2 class="section-title">Key Projects</h2>
-                <div class="proj-grid scroll-content">
-                    {{range $i, $proj := .Profile.Projects}}
-                    <div class="proj-card scroll-item glassmorphism" data-tilt data-tilt-max="2" data-tilt-glare
-                        data-tilt-max-glare="0.1">
-                        <div class="proj-header">
-                            <div class="proj-name">{{$proj.Name}}</div>
-                            {{range $name, $url := $proj.Links}}
-                            <a href="{{$url}}" target="_blank" class="verification-badge">{{title $name}} <svg
-                                    width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                                </svg></a>
-                            {{end}}
-                        </div>
-                        <div class="proj-stack">
-                            {{range .RelatedSkills}}
-                            <span class="skill-tag mini">{{.}}</span>
-                            {{end}}
-                        </div>
-                        <div class="proj-desc">{{.Description}}</div>
+    <section id="projects">
+        <div class="container">
+            <p class="section-label"># cat projects.json</p>
+            <h2 class="section-title">Key Projects</h2>
+            <div class="proj-grid">
+                {{range $i, $proj := .Profile.Projects}}
+                <div class="proj-card glassmorphism" data-tilt data-tilt-max="2" data-tilt-glare
+                    data-tilt-max-glare="0.1">
+                    <div class="proj-header">
+                        <div class="proj-name">{{$proj.Name}}</div>
+                        {{range $name, $url := $proj.Links}}
+                        <a href="{{$url}}" target="_blank" class="verification-badge">{{title $name}} <svg width="12"
+                                height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg></a>
+                        {{end}}
                     </div>
-                    {{end}}
+                    <div class="proj-stack">
+                        {{range .RelatedSkills}}
+                        <span class="skill-tag mini">{{.}}</span>
+                        {{end}}
+                    </div>
+                    <div class="proj-desc">{{.Description}}</div>
                 </div>
+                {{end}}
             </div>
         </div>
     </section>
@@ -235,7 +231,7 @@
                     </p>
                     <div class="contact-info-item">
                         <strong>SSH &nbsp;</strong>
-                        <span>ssh {{or (env "DOMAIN") "portfolio.vaswani.dev"}} -p {{or (env "SSH_PORT") "2222"}}</span>
+                        <span>ssh {{or (env "DOMAIN") "portfolio.vaswani.dev"}} -p {{or (env "SSH_PORT") "22"}}</span>
                     </div>
                     <div class="contact-info-item">
                         <strong>Email</strong>
@@ -282,7 +278,7 @@
 
     <!-- ── FOOTER ── -->
     <footer>
-        Built in Go &nbsp;·&nbsp; HTTP :8080 &nbsp;+&nbsp; SSH :2222 &nbsp;·&nbsp;
+        Built in Go &nbsp;·&nbsp; HTTP :8080 &nbsp;+&nbsp; SSH :22 &nbsp;·&nbsp;
         &copy; 2026 {{.Profile.Name}} &nbsp;·&nbsp;
         <a href="https://{{.Profile.Contact.GitHub}}" target="_blank">{{.Profile.Contact.GitHub}}</a>
     </footer>
